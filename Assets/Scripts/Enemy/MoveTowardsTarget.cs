@@ -6,10 +6,7 @@ public class MoveTowardsTarget : MonoBehaviour
 {
     private Waypoints Wpoints;
     private int waypointIndex;
-
-    public Transform target;
-    public float t;
-
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -18,18 +15,14 @@ public class MoveTowardsTarget : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        Vector2 a = transform.position;
-        Vector2 b = Wpoints.waypoints[waypointIndex].position;
-        transform.position = Vector2.Lerp(a, b, t * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, Wpoints.waypoints[waypointIndex].position, speed * Time.deltaTime);
 
-        if(Vector2.Distance(a, b) < 0.1f)
+        if(Vector3.Distance(transform.position, Wpoints.waypoints[waypointIndex].position) < 0.1f)
         {
-            if(waypointIndex < Wpoints.waypoints.Length - 1)
-            {
-                waypointIndex++;
-            }
+            waypointIndex++;
         }
     }
+    
 }
