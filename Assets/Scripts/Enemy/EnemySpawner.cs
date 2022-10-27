@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
         if (timer > delay)
         {
             GameObject obj = Instantiate(Enemy);
-            obj.transform.position = new Vector3(0f, 0.407f, 2.708f);
+            obj.transform.position = new Vector3(5.675f, -4.3f, 2.206501f);
             timer = 0.0f;
         }
     }
